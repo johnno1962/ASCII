@@ -17,7 +17,8 @@ values to string literals as follows:
 If the UInt8 variable `c` does not contain an ASCII character
 i.e. it has a value 128 or more the property returns nil as
 the comparision would never be valid given the semantics of
-utf8 encoded strings.
+utf8 encoded strings. This novel approach was suggested by 
+user @michelf on the swift-evolution forums.
 
 The property can also be used in switch statments:
 
@@ -33,18 +34,18 @@ The property can also be used in switch statments:
 ```
 This switch statment shows the imitations of this approach
 that invalid code intentded to match the non-ASCII character
-`é` which will never work is able to compile. This approach
-was suggested by user @michelf on the swift-evolution forums.
+`é` which will never work is able to compile.
 
 ### ImplicitASCII module.
 
 A different approach is taken if you import the `ImplicitASCII`
 module. It defines a minimal set of operators to compare a 
-`UInt8` value driectly to a `UnicodeScalar` (generall a double
+`UInt8` value directly to a `UnicodeScalar` (generally a double
 quoted string literal).
 
 In this way. the `.ascii` property does not need to be used but
 note that if a value is compared against a non-ASCII literal
-or there is a switch with a non-ASCII case this approach can
-crash your program. This can be perceived as a feature or not
+or there is a switch with a non-ASCII case this approach will
+crash your program during `DEBUG` and ignore the case for a 
+`Release` build. This can be perceived as a feature or not
 depending on your viewpoint.

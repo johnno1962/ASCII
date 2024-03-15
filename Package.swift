@@ -23,6 +23,6 @@ let package = Package(
             name: "ImplicitASCII"),
         .testTarget(
             name: "ASCIITests",
-            dependencies: ["ASCII"]),
+            dependencies: ["ASCII", "ImplicitASCII"]),
     ]
 )
