@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "ASCII",
             targets: ["ASCII"]),
+        .library(
+            name: "ImplicitASCII",
+            targets: ["ImplicitASCII"]),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
